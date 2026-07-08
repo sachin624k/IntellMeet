@@ -1,7 +1,6 @@
 import express from "express";
 import protect from "../middlewares/auth.js";
 import validateRegister from "../validators/authValidator.js";
-
 import {
   register,
   login,
@@ -14,6 +13,8 @@ const router = express.Router();
 router.post("/register", validateRegister, register);
 router.post("/login", login);
 router.post("/logout", logout);
+
+// Protect this route
 router.get("/profile", protect, getProfile);
 
 export default router;
