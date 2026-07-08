@@ -4,6 +4,7 @@ import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.routes.js";
+import errorHandler from "./middlewares/errorHandler.js";
 
 const app = express();
 
@@ -19,5 +20,10 @@ app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
   res.send("IntellMeet Backend Running...");
 });
+
+
+
+// Global Error Handler (must be last)
+app.use(errorHandler);
 
 export default app;
