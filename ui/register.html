@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create your workspace — LOOP</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="toast" id="toast"><span class="dot"></span><span id="toast-text">Done</span></div>
+
+<div class="auth-layout">
+  <aside class="auth-brand">
+    <div class="auth-brand-top">
+      <a href="index.html" class="logo"><span class="logo-mark"></span><span class="brand-word">LOOP</span></a>
+    </div>
+    <div class="auth-brand-copy">
+      <h2>Set up your workspace in under a minute.</h2>
+      <p>You'll be the admin — invite your team once you're in.</p>
+    </div>
+    <div class="auth-brand-feed">
+      <div class="feed-mask" style="height:100%;">
+        <div class="feed-track" id="register-feed"></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="auth-form-side">
+    <a class="auth-back" href="index.html">&larr; Back to LOOP</a>
+    <div class="auth-card">
+      <h1>Create your workspace</h1>
+      <p class="sub">Takes about a minute. No credit card.</p>
+
+      <form id="form-register" onsubmit="return handleSubmit(event,'register')">
+        <div class="field">
+          <label for="reg-name">Full name</label>
+          <input class="input" type="text" id="reg-name" placeholder="Jordan Lee" required>
+        </div>
+        <div class="field">
+          <label for="reg-email">Work email</label>
+          <input class="input" type="email" id="reg-email" placeholder="you@company.com" required>
+        </div>
+        <div class="field">
+          <label for="reg-password">Password</label>
+          <input class="input" type="password" id="reg-password" placeholder="At least 8 characters" required>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" id="btn-register">
+          <span class="spinner"></span><span class="btn-label">Create workspace</span>
+        </button>
+        <div class="role-note">You'll be set as <strong>Admin</strong> for this workspace and can invite Analysts and Viewers afterward.</div>
+      </form>
+
+      <div class="switcher">Already have a workspace? <a href="login.html">Sign in</a></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
