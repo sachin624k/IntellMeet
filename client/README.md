@@ -1,16 +1,52 @@
-# React + Vite
+# loop-auth-ui (React / Vite version)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React rebuild of the LOOP auth flow for the `feature/auth-ui` task.
+Same design as the HTML version, now as real components with routing.
+Dummy data only — every submit just `console.log`s the form values and
+shows a fake success toast. No backend, no Axios calls.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Then open the URL it prints (usually `http://localhost:5173`).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Structure
 
-## Expanding the ESLint configuration
+```
+src/
+├── main.jsx              # app entry, wraps everything in BrowserRouter
+├── App.jsx                # defines the 4 routes
+├── index.css              # design tokens + all component styles
+├── components/
+│   ├── AuthLayout.jsx      # split-screen wrapper (dark brand panel + form)
+│   ├── Input.jsx           # labeled input with optional error/hint
+│   ├── Button.jsx          # primary/ghost button with built-in loading state
+│   ├── Loader.jsx          # standalone spinner + Toast component
+│   └── FeedbackTicker.jsx  # the scrolling sentiment-feed visual
+├── hooks/
+│   └── useDummySubmit.js   # shared loading + toast + console.log logic
+└── pages/
+    ├── Landing.jsx         # route: /
+    ├── Login.jsx           # route: /login
+    ├── Register.jsx        # route: /register
+    └── ForgotPassword.jsx  # route: /forgot-password
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Routes
+
+| Path | Page |
+|---|---|
+| `/` | Landing |
+| `/login` | Login |
+| `/register` | Register |
+| `/forgot-password` | Forgot Password |
+
+## Next steps (when the backend is ready)
+
+Replace the body of `submit()` inside `src/hooks/useDummySubmit.js` with a real
+`fetch`/`axios` call to Sachin/Ritik's API (`/register`, `/login`, `/logout`,
+`/profile`), instead of the `setTimeout` + `console.log`.
